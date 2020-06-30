@@ -10,10 +10,10 @@ object pandemiaGameConfig {
 	method configureGame() {
 		self.configureGameParameters()
 		self.agregarManzanas()
-//		self.configureTeclas()
+		self.configureTeclas()
 		game.addVisual(agente)
-		// agregar las teclas de acciones
-		// después, al agente de salud y sus teclas de acciones y movimiento
+//HECHO agregar las teclas de acciones
+//HECHO después, al agente de salud y sus teclas de acciones y movimiento
 	}
 		
 	method configureGameParameters() {
@@ -35,11 +35,14 @@ object pandemiaGameConfig {
 	
  	method configureTeclas() {
 //		keyboard.m().onPressDo({game.say(agente, )})
-//		keyboard.n().onPressDo({simulacion.nuevoInfectado()})
+		keyboard.n().onPressDo({simulacion.nuevoInfectado()})
+		keyboard.b().onPressDo({simulacion.manzanas().forEach({man => man.pasarUnDia()})})
 		keyboard.right().onPressDo({agente.moveEste()})
 		keyboard.left().onPressDo({agente.moveOeste()})
 		keyboard.up().onPressDo({agente.moveNorte()})
 		keyboard.down().onPressDo({agente.moveSur()})
+//		keyboard.z().onPressDo({agente.aislarInfectados()})
+//		keyboard.x().onPressDo({agente.cuarentenarManzana()})
 	}
 	
 }

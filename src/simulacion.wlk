@@ -55,11 +55,11 @@ object simulacion {
 		return new Persona()
 	}
 	
-//	method nuevoInfectado() {
-//		self.manzanaRandom().add(self.crearInfectado())
-//	}
+	method nuevoInfectado() {
+		self.manzanaRandom().add(self.crearInfectado())
+	}
 	method crearInfectado() {
-		self.crearPersona().infectarse()
+		return self.crearPersona().infectarse()
 	}
 	method manzanaRandom() {
 		return manzanas.anyOne()

@@ -16,4 +16,10 @@ object agente {
 	method moveNorte() {
 		self.position(self.position().up(1))
 	}
+	method aislarInfectados(){
+		//aislar todos los infectados
+	}
+	method cuarentenarManzana(){
+		//pone la manzana en cuarentena	
+	}
 }

@@ -20,9 +20,12 @@ class Manzana {
 	method pasarUnDia() {
 		self.transladoDeUnHabitante()
 		self.simulacionContagiosDiarios()
-		// despues agregar la curacion
+		self.curacion()
+//HECHO despues agregar la curacion
 	}
-	
+	method curacion() {
+		personas.forEach({pers => pers.cura()})
+	}
 	method personaSeMudaA(persona, manzanaDestino) {
 		// implementar
 	}

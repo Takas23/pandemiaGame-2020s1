@@ -26,6 +26,10 @@ class Persona {
 	method ubicarEn(manzana) {
 		manzana.personas().add(self)
 	}
+	method cura() {
+		if ((diaDeInfeccion-simulacion.diaActual()).abs() > 20)
+		estaInfectada = false
+	}
 }
 
 /* 
