@@ -33,15 +33,15 @@ object pandemiaGameConfig {
 		})
 	}
 	
-/* 	method configureTeclas() {
+ 	method configureTeclas() {
 //		keyboard.m().onPressDo({game.say(agente, )})
-		keyboard.n().onPressDo({simulacion.nuevoInfectado()})
+//		keyboard.n().onPressDo({simulacion.nuevoInfectado()})
 		keyboard.right().onPressDo({agente.moveEste()})
 		keyboard.left().onPressDo({agente.moveOeste()})
 		keyboard.up().onPressDo({agente.moveNorte()})
 		keyboard.down().onPressDo({agente.moveSur()})
 	}
-*/	
+	
 }
 
 program pandemiaGame {
