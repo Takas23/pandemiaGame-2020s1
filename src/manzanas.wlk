@@ -26,15 +26,23 @@ class Manzana {
 	method personaSeMudaA(persona, manzanaDestino) {
 		// implementar
 	}
-	
+
 	method cantidadContagiadores() {
-		return 0
-		// reemplazar por la cantidad de personas infectadas que no estan aisladas
+		return self.contagiadores().size()
+	
+	// cprreccion 	
+	//method cantidadContagiadores() = personas.count({ p => p.noAisladas()}
+		
+	
+		
+//HECHO	 =>	 reemplazar por la cantidad de personas infectadas que no estan aisladas
 	}
 	
 	method noInfectades() {
 		return personas.filter({ pers => not pers.estaInfectada() })
 	} 	
+	
+	// method noInfectades() = personas.filter({ pers => not pers.estaInfectada() })
 	
 	method simulacionContagiosDiarios() { 
 		const cantidadContagiadores = self.cantidadContagiadores()
@@ -54,5 +62,29 @@ class Manzana {
 			const destino = simulacion.manzanas().filter({ manz => self.esManzanaVecina(manz) }).anyOne()
 			self.personaSeMudaA(viajero, destino)			
 		}
+	}
+	method personasQueViven() {
+		return personas.size()
+	}
+	method infectadas() {
+		return personas.asSet().difference(self.noInfectades().asSet())
+	}
+	//
+	//method infectadas() = personas.filter({ p => p.estaInfectada()})
+	
+	method personasAisladas() {
+		return personas.filter({pers => pers.estaAislada()}).asSet()
+	}
+	method contagiadores() {
+		return self.infectadas().diference(self.personasAisladas())
+	}
+	// method noInfectades() = personas.filter({ pers => not pers.estaInfectada() })
+	// method noAisladas() = self.infectadas().filter({p => not p.estaAislada()})
+	
+	method vive(persona) {
+		return personas.contains(persona)
+	}
+	method agregarPersonas(lista) {
+		personas.addAll(lista)
 	}
 }

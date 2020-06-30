@@ -29,9 +29,40 @@ object simulacion {
 		return (1..cantidadContagiadores).any({n => self.tomarChance(chanceDeContagio) })	
 	}
 
-	method crearManzana() {
+/* 	method crearManzana() {
 		const nuevaManzana = new Manzana()
-		// agregar la cantidad de personas segun self.personasPorManzana()
+				// agregar la cantidad de personas segun self.personasPorManzana()
 		return nuevaManzana
 	}
+*/
+//revisar
+ 	method crearManzana() {
+		const nuevaManzana = new Manzana()
+		nuevaManzana.agregarPersonas(self.crear_Personas(personasPorManzana))
+			return nuevaManzana
+	}
+	method crear_Personas(cantidad) {
+		var contador = cantidad
+		const nuevasPersonas = []
+			if (cantidad > 0) { 
+				nuevasPersonas.add(self.crearPersona())
+				contador -= 1
+			}
+				return nuevasPersonas
+	}
+
+	method crearPersona() {
+		return new Persona()
+	}
+	
+//	method nuevoInfectado() {
+//		self.manzanaRandom().add(self.crearInfectado())
+//	}
+	method crearInfectado() {
+		self.crearPersona().infectarse()
+	}
+	method manzanaRandom() {
+		return manzanas.anyOne()
+	}
+
 }

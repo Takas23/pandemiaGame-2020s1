@@ -1,14 +1,17 @@
 import wollok.game.*
 import simulacion.*
+import agente.*
 
 object pandemiaGameConfig {
 	method height() = 4
 	method width() = 6
-	method title() = "Simuléichon"
+	method title() = "Simulacion"
 	
 	method configureGame() {
 		self.configureGameParameters()
 		self.agregarManzanas()
+//		self.configureTeclas()
+		game.addVisual(agente)
 		// agregar las teclas de acciones
 		// después, al agente de salud y sus teclas de acciones y movimiento
 	}
@@ -30,10 +33,18 @@ object pandemiaGameConfig {
 		})
 	}
 	
+/* 	method configureTeclas() {
+//		keyboard.m().onPressDo({game.say(agente, )})
+		keyboard.n().onPressDo({simulacion.nuevoInfectado()})
+		keyboard.right().onPressDo({agente.moveEste()})
+		keyboard.left().onPressDo({agente.moveOeste()})
+		keyboard.up().onPressDo({agente.moveNorte()})
+		keyboard.down().onPressDo({agente.moveSur()})
+	}
+*/	
 }
 
 program pandemiaGame {
 	pandemiaGameConfig.configureGame()
 	game.start()
 }
-

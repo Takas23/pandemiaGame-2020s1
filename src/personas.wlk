@@ -1,13 +1,50 @@
+import simulacion.*
+
 class Persona {
 	var property estaAislada = false
-	
-	method estaInfectada() {
-		return false
-		// implementar
-	}
+	var property estaInfectada = false
+	var property respetaCuarentena = false
+	var diaDeInfeccion 
+//	var property manzanaDondeVive
 	
 	method infectarse() {
-		// implementar 
+		estaInfectada = true
+		diaDeInfeccion = simulacion.diaActual()
+	}
+//	method sePuedeContagiar(persona) { if(self.manzanaDondeVive() == persona.manzanaDondeVive()) persona.infectarse()
+//	}
+	method sePuedeContagiar(persona) {
+		if(self.viveCon(persona)) {
+			persona.infectarse()}
+	}
+	method dondeVive() {
+		return simulacion.manzanas().find({m => m.vive(self)})
+	}
+	method viveCon(persona) {
+		return self.dondeVive() == persona.dondeVive()
+	}
+	method ubicarEn(manzana) {
+		manzana.personas().add(self)
 	}
 }
 
+/* 
+class Persona {
+	var property estaAislada = false
+	var property respetaLaCuarentena = true
+	var property diaQueSeInfecto = 0
+	var property presentaSintomas = false
+	var property estaInfectada = false
+	
+	
+	method infectarse() {
+		// implementar 
+		estaInfectada = true 
+		diaQueSeInfecto = simulacion.diaActual()
+		
+		
+	}
+}
+
+ 
+ */
