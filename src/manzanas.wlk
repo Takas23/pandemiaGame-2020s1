@@ -3,13 +3,28 @@ import simulacion.*
 import wollok.game.*
 
 class Manzana {
-	const property personas = []
+	const property personas = [new Persona()]
 	var property position
 	
 	method image() {
-		// reeemplazarlo por los distintos colores de acuerdo a la cantidad de infectados
+// HECHO		 reeemplazarlo por los distintos colores de acuerdo a la cantidad de infectados
 		// también vale reemplazar estos dibujos horribles por otros más lindos
-		return "blanco.png"
+		
+		return if(self.infectadas().size() == self.personasQueViven()){
+			"rojo.png"
+		}
+		else if(self.infectadas().size() > 7 and self.infectadas().size() < self.personasQueViven()){
+			"naranjaOscuro.png"
+		}
+		else if(self.infectadas().size().between(4,7)){
+			"narnaja.png"
+		}
+		else if(self.infectadas().size().between(1,3)){
+			"amarillo.png"
+		}
+		else {
+			"blanco.png"
+		}
 	}
 	
 	// este les va a servir para el movimiento
