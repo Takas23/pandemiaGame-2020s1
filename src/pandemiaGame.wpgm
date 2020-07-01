@@ -5,15 +5,14 @@ import agente.*
 object pandemiaGameConfig {
 	method height() = 4
 	method width() = 6
-	method title() = "Simulacion"
+	method title() = "Simulacion - noCompila"
 	
 	method configureGame() {
 		self.configureGameParameters()
 		self.agregarManzanas()
 		self.configureTeclas()
 		game.addVisual(agente)
-//HECHO agregar las teclas de acciones
-//HECHO después, al agente de salud y sus teclas de acciones y movimiento
+
 	}
 		
 	method configureGameParameters() {
@@ -32,11 +31,23 @@ object pandemiaGameConfig {
 			})
 		})
 	}
-	
+
+
  	method configureTeclas() {
-		keyboard.m().onPressDo({game.say(agente, "Viven " + agente.manzanaActual().personasQueViven() + " personas.")})
+ 		const dia = "Dia: " + simulacion.diaActual()
+ 		const pers = " Personas: " + simulacion.totalPersonas()
+		const inf = " Infectados: " + simulacion.totalInfectados()
+//		const sint = " Sintomaticos: " + simulacion.totalSintomaticos()		
+ 		
+		keyboard.m().onPressDo({game.say(agente, dia+pers+inf)})
+			//mensaje estado de la simulacion
 		keyboard.n().onPressDo({simulacion.nuevoInfectado()})
-		keyboard.b().onPressDo({simulacion.manzanas().forEach({man => man.pasarUnDia()})})
+			//genera una nueva persona infectada en una manzana al azar
+		keyboard.b().onPressDo({
+			simulacion.pasaUnDia()
+			console.println("terminó el día")
+		})
+			//pasa un dia en la simulacion(movimiento, contagio, curacion)
 		keyboard.right().onPressDo({agente.moveEste()})
 		keyboard.left().onPressDo({agente.moveOeste()})
 		keyboard.up().onPressDo({agente.moveNorte()})

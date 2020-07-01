@@ -36,15 +36,18 @@ class Manzana {
 		self.transladoDeUnHabitante()
 		self.simulacionContagiosDiarios()
 		self.curacion()
-//HECHO despues agregar la curacion
+
 	}
 	method curacion() {
 		personas.forEach({pers => pers.cura()})
 	}
 	method personaSeMudaA(persona, manzanaDestino) {
-		// implementar
+		persona.ubicarEn(manzanaDestino)
+		self.personas().remove(persona)
 	}
-
+	method contagiadores() {
+		return self.infectadas().filter({pers => not pers.estaAislada()})
+	}
 	method cantidadContagiadores() {
 		return self.contagiadores().size()
 	
@@ -59,7 +62,12 @@ class Manzana {
 	method noInfectades() {
 		return personas.filter({ pers => not pers.estaInfectada() })
 	} 	
-	
+	method infectadas() {
+		return personas.filter({ p => p.estaInfectada() })
+	}
+	method cantidadInfectados() {
+		return self.infectadas().size()
+	}
 	// method noInfectades() = personas.filter({ pers => not pers.estaInfectada() })
 	
 	method simulacionContagiosDiarios() { 
@@ -71,31 +79,40 @@ class Manzana {
 				}
 			})
 		}
+//¿faltaria lo de las 4 personas o mas?
 	}
 	
-	method transladoDeUnHabitante() {
+/* 	method transladoDeUnHabitante() {
 		const quienesSePuedenMudar = personas.filter({ pers => not pers.estaAislada() })
 		if (quienesSePuedenMudar.size() > 2) {
 			const viajero = quienesSePuedenMudar.anyOne()
 			const destino = simulacion.manzanas().filter({ manz => self.esManzanaVecina(manz) }).anyOne()
 			self.personaSeMudaA(viajero, destino)			
 		}
+ 	}
+ */
+	method transladoDeUnHabitante() {
+		if (self.personasAisladas().size() > 2) {
+			const viajero = self.personasAisladas().anyOne()
+			const destino = simulacion.manzanas().filter({ manz => self.esManzanaVecina(manz) }).anyOne()
+			self.personaSeMudaA(viajero, destino)
+		}
 	}
+	
+	
 	method personasQueViven() {
 		return personas.size()
 	}
-	method infectadas() {
-		return personas.asSet().difference(self.noInfectades().asSet())
-	}
-	//
-	//method infectadas() = personas.filter({ p => p.estaInfectada()})
+//	method infectadas() {
+//		return personas.asSet().difference(self.noInfectades().asSet())
+//	}
 	
 	method personasAisladas() {
-		return personas.filter({pers => pers.estaAislada()}).asSet()
+		return personas.filter({pers => pers.estaAislada()})
 	}
-	method contagiadores() {
-		return self.infectadas().diference(self.personasAisladas())
-	}
+//	method contagiadores() {
+//		return self.infectadas().asSet().diference(self.personasAisladas().asSet())
+//	}
 	// method noInfectades() = personas.filter({ pers => not pers.estaInfectada() })
 	// method noAisladas() = self.infectadas().filter({p => not p.estaAislada()})
 	

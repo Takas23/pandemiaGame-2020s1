@@ -5,7 +5,7 @@ class Persona {
 	var property estaInfectada = false
 	var property respetaCuarentena = false
 	var diaDeInfeccion 
-//	var property manzanaDondeVive
+
 	
 	method infectarse() {
 		estaInfectada = true
@@ -24,11 +24,19 @@ class Persona {
 		return self.dondeVive() == persona.dondeVive()
 	}
 	method ubicarEn(manzana) {
-		manzana.personas().add(self)
+		manzana.personas().add(self)	
 	}
-	method cura() {
-		if ((diaDeInfeccion-simulacion.diaActual()).abs() > simulacion.duracionInfeccion())
+/* 	method cura() {
+		if ((diaDeInfeccion-simulacion.diaActual()
+		).abs() > simulacion.duracionInfeccion())
 		estaInfectada = false
+	}
+
+*/
+	method cura() {
+		if (self.estaInfectada() 
+			and (diaDeInfeccion-simulacion.diaActual()).abs() > simulacion.duracionInfeccion())
+		self.estaInfectada(true)
 	}
 }
 
