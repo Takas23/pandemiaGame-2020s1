@@ -3,7 +3,7 @@ import simulacion.*
 import wollok.game.*
 
 class Manzana {
-	const property personas = [new Persona()]
+	const property personas = []
 	var property position
 	
 	method image() {
