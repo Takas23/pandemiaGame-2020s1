@@ -34,15 +34,15 @@ object pandemiaGameConfig {
 	}
 	
  	method configureTeclas() {
-//		keyboard.m().onPressDo({game.say(agente, )})
+		keyboard.m().onPressDo({game.say(agente, "Viven " + agente.manzanaActual().personasQueViven() + " personas.")})
 		keyboard.n().onPressDo({simulacion.nuevoInfectado()})
 		keyboard.b().onPressDo({simulacion.manzanas().forEach({man => man.pasarUnDia()})})
 		keyboard.right().onPressDo({agente.moveEste()})
 		keyboard.left().onPressDo({agente.moveOeste()})
 		keyboard.up().onPressDo({agente.moveNorte()})
 		keyboard.down().onPressDo({agente.moveSur()})
-//		keyboard.z().onPressDo({agente.aislarInfectados()})
-//		keyboard.x().onPressDo({agente.cuarentenarManzana()})
+		keyboard.z().onPressDo({agente.aislarInfectados()})
+		keyboard.x().onPressDo({agente.cuarentenarManzana()})
 	}
 	
 }
