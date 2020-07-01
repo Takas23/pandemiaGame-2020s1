@@ -27,7 +27,7 @@ class Persona {
 		manzana.personas().add(self)
 	}
 	method cura() {
-		if ((diaDeInfeccion-simulacion.diaActual()).abs() > 20)
+		if ((diaDeInfeccion-simulacion.diaActual()).abs() > simulacion.duracionInfeccion())
 		estaInfectada = false
 	}
 }
