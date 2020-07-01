@@ -32,23 +32,3 @@ class Persona {
 	}
 }
 
-/* 
-class Persona {
-	var property estaAislada = false
-	var property respetaLaCuarentena = true
-	var property diaQueSeInfecto = 0
-	var property presentaSintomas = false
-	var property estaInfectada = false
-	
-	
-	method infectarse() {
-		// implementar 
-		estaInfectada = true 
-		diaQueSeInfecto = simulacion.diaActual()
-		
-		
-	}
-}
-
- 
- */

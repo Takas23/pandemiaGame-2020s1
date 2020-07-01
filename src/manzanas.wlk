@@ -41,9 +41,6 @@ class Manzana {
 //HECHO	 =>	 reemplazar por la cantidad de personas infectadas que no estan aisladas
 	}
 	
-	method noInfectades() {
-		return personas.filter({ pers => not pers.estaInfectada() })
-	} 	
 	
 	// method noInfectades() = personas.filter({ pers => not pers.estaInfectada() })
 	
@@ -66,23 +63,17 @@ class Manzana {
 			self.personaSeMudaA(viajero, destino)			
 		}
 	}
-	method personasQueViven() {
-		return personas.size()
-	}
-	method infectadas() {
-		return personas.asSet().difference(self.noInfectades().asSet())
-	}
-	//
-	//method infectadas() = personas.filter({ p => p.estaInfectada()})
+	method personasQueViven() = personas.size()
+	
+	method infectadas() = personas.filter({ p => p.estaInfectada()})
 	
 	method personasAisladas() {
 		return personas.filter({pers => pers.estaAislada()}).asSet()
 	}
-	method contagiadores() {
-		return self.infectadas().diference(self.personasAisladas())
-	}
-	// method noInfectades() = personas.filter({ pers => not pers.estaInfectada() })
-	// method noAisladas() = self.infectadas().filter({p => not p.estaAislada()})
+	method contagiadores() =  self.infectadas().diference(self.personasAisladas())
+	
+	method noInfectades() = personas.filter({ pers => not pers.estaInfectada() })
+    method noAisladas() = self.infectadas().filter({p => not p.estaAislada()})
 	
 	method vive(persona) {
 		return personas.contains(persona)
