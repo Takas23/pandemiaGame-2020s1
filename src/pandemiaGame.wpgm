@@ -2,6 +2,7 @@ import wollok.game.*
 import simulacion.*
 import agente.*
 
+
 object pandemiaGameConfig {
 	method height() = 4
 	method width() = 6
