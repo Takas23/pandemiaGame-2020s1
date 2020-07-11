@@ -10,16 +10,18 @@ class Manzana {
 // HECHO		 reeemplazarlo por los distintos colores de acuerdo a la cantidad de infectados
 		// también vale reemplazar estos dibujos horribles por otros más lindos
 		
-		return if((self.infectadas().size() - self.personasQueViven()).abs() == 0){
+//		return if((self.infectadas().size() - self.personasQueViven()).abs() == 0){
+		return if ((self.cantidadInfectados() == self.personasQueViven())) {
 			"rojo.png"
 		}
-		else if(self.infectadas().size() > 7 and self.infectadas().size() < self.personasQueViven()){
+//		else if(self.infectadas().size() > 7 and self.infectadas().size() < self.personasQueViven()){
+		else if(self.cantidadInfectados().between(8, (self.personasQueViven()-1))) {
 			"naranjaOscuro.png"
 		}
-		else if(self.infectadas().size().between(4,7)){
+		else if(self.cantidadInfectados().between(4,7)){
 			"naranja.png"
 		}
-		else if(self.infectadas().size().between(1,3)){
+		else if(self.cantidadInfectados().between(1,3)){
 			"amarillo.png"
 		}
 		else {
@@ -40,7 +42,7 @@ class Manzana {
 	}
 	method curacion() {
 		personas.forEach({pers => pers.cura()})
-	}
+	}	//testeado OK
 	
 	
 	method contagiadores() =  self.infectadas().difference(self.personasAisladas())
@@ -56,22 +58,22 @@ class Manzana {
 //HECHO	 =>	 reemplazar por la cantidad de personas infectadas que no estan aisladas
 	}
 	
-	method noInfectades() {
+	method noInfectadas() {
 		return personas.filter({ pers => not pers.estaInfectada() })
 	} 	
 	
 	method infectadas() {
 		return personas.filter({ p => p.estaInfectada() }).asSet()
-	}
+	}	//testeado OK
 	
 	method cantidadInfectados() {
 		return self.infectadas().size()
-	}
+	}	//testeado OK
 		
 	method simulacionContagiosDiarios() { 
 		const cantidadContagiadores = self.cantidadContagiadores()
 		if (cantidadContagiadores > 0) {
-			self.noInfectades().forEach({ persona => 
+			self.noInfectadas().forEach({ persona => 
 				if (simulacion.debeInfectarsePersona(persona, cantidadContagiadores)) {
 					persona.infectarse()
 				}
@@ -112,7 +114,8 @@ class Manzana {
 	
 	method personasQueViven() {
 		return personas.size()
-	}
+	}	//testeado OK
+	
 //	method infectadas() {
 //		return personas.asSet().difference(self.noInfectades().asSet())
 //	}
@@ -126,10 +129,11 @@ class Manzana {
 	
 	method vive(persona) {
 		return personas.contains(persona)
-	}
+	}	//testeado OK
+	
 	method agregarPersonas(lista) {
 		personas.addAll(lista)
-	}
+	}	//testeado OK
 }
 
 

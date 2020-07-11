@@ -1,5 +1,6 @@
 import simulacion.*
 
+
 class Persona {
 	var property estaAislada = false
 	var property estaInfectada = false
@@ -10,22 +11,28 @@ class Persona {
 	method infectarse() {
 		estaInfectada = true
 		diaDeInfeccion = simulacion.diaActual()
-	}
+	}	//testeado OK
+	
 //	method sePuedeContagiar(persona) { if(self.manzanaDondeVive() == persona.manzanaDondeVive()) persona.infectarse()
 //	}
+//revisar
 	method sePuedeContagiar(persona) {
 		if(self.viveCon(persona)) {
 			persona.infectarse()}
 	}
+	
 	method dondeVive() {
 		return simulacion.manzanas().find({m => m.vive(self)})
-	}
+	}	//testeado OK
+	
 	method viveCon(persona) {
 		return self.dondeVive() == persona.dondeVive()
-	}
-	method ubicarEn(manzana) {
+	}	//testeado OK
+	
+	method ubicarEn(manzana) {	
 		manzana.personas().add(self)	
-	}
+	}	//testeado OK
+	
 /* 	method cura() {
 		if ((diaDeInfeccion-simulacion.diaActual()
 		).abs() > simulacion.duracionInfeccion())
@@ -36,8 +43,8 @@ class Persona {
 	method cura() {
 		if (self.estaInfectada() 
 			and (diaDeInfeccion-simulacion.diaActual()).abs() > simulacion.duracionInfeccion())
-		self.estaInfectada(true)
-	}
+		self.estaInfectada(false)
+	}	//testeado OK
 }
 
 
@@ -58,4 +65,5 @@ class Persona {
 	method sePuedeContagiar(persona) = self.manzanaDondeVive() == persona.manzanaDondeVive() and  persona.infestadaYNoAislada()
 	method infestadaYNoAislada() = self.estaInfectada() and not self.estaAislada()
 }*/
+
 

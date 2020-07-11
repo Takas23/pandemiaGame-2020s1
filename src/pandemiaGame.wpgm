@@ -1,6 +1,8 @@
 import wollok.game.*
 import simulacion.*
 import agente.*
+import personas.*
+import manzanas.*
 
 
 object pandemiaGameConfig {
@@ -35,26 +37,26 @@ object pandemiaGameConfig {
 
 
  	method configureTeclas() {
- 		const dia = "Dia: " + simulacion.diaActual()
- 		const pers = " Personas: " + simulacion.totalPersonas()
-		const inf = " Infectados: " + simulacion.totalInfectados()
-//		const sint = " Sintomaticos: " + simulacion.totalSintomaticos()		
- 		
-		keyboard.m().onPressDo({game.say(agente, dia+pers+inf)})
+		keyboard.m().onPressDo({game.say(agente, "Dia:" + simulacion.diaActual()
+				+ " Personas:" + simulacion.totalPersonas()
+				+ " Infectados:" + simulacion.totalInfectados())}) 
 			//mensaje estado de la simulacion
 		keyboard.n().onPressDo({simulacion.nuevoInfectado()})
 			//genera una nueva persona infectada en una manzana al azar
 		keyboard.b().onPressDo({
 			simulacion.pasaUnDia()
-			console.println("terminó el día")
-		})
+			console.println("terminó el día "+(simulacion.diaActual()-1))})
 			//pasa un dia en la simulacion(movimiento, contagio, curacion)
 		keyboard.right().onPressDo({agente.moveEste()})
 		keyboard.left().onPressDo({agente.moveOeste()})
 		keyboard.up().onPressDo({agente.moveNorte()})
 		keyboard.down().onPressDo({agente.moveSur()})
+//falta probar z y x
 		keyboard.z().onPressDo({agente.aislarInfectados()})
 		keyboard.x().onPressDo({agente.cuarentenarManzana()})
+//extra LUJO
+		keyboard.i().onPressDo({game.say(agente, "Total:" + agente.dondeEstoy().personasQueViven()
+				+ " Infectados:" + agente.dondeEstoy().cantidadInfectados())})		
 	}
 	
 }
