@@ -13,6 +13,7 @@ object pandemiaGameConfig {
 	method configureGame() {
 		self.configureGameParameters()
 		self.agregarManzanas()
+		simulacion.agregarPersonas() //provisorio?
 		self.configureTeclas()
 		game.addVisual(agente)
 
@@ -34,6 +35,8 @@ object pandemiaGameConfig {
 			})
 		})
 	}
+	
+
 
 
  	method configureTeclas() {

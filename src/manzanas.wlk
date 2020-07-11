@@ -130,14 +130,16 @@ class Manzana {
 	method vive(persona) {
 		return personas.contains(persona)
 	}	//testeado OK
-	
+}
+/* 
 	method agregarPersonas(lista) {
 		personas.addAll(lista)
 	}	//testeado OK
+
 }
-
-
-/*	method image() {
+*/
+/*
+	method image() {
 		var imagen
 		if(self.infectadas() == 0) imagen = 'blanco.png'
 		else if(self.infectadas().between(1,3)) imagen = 'amarillo.png'
