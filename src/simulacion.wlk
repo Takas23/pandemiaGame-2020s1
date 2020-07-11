@@ -114,6 +114,4 @@ object simulacion {
 		manzanas.forEach({m => m.pasarUnDia()})
 		diaActual += 1
 	}
-
-
 }

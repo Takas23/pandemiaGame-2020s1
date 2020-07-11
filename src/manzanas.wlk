@@ -69,7 +69,9 @@ class Manzana {
 	method cantidadInfectados() {
 		return self.infectadas().size()
 	}	//testeado OK
-		
+	
+	
+	//Revisar	
 	method simulacionContagiosDiarios() { 
 		const cantidadContagiadores = self.cantidadContagiadores()
 	
