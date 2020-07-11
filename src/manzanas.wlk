@@ -72,15 +72,31 @@ class Manzana {
 		
 	method simulacionContagiosDiarios() { 
 		const cantidadContagiadores = self.cantidadContagiadores()
+	
 		if (cantidadContagiadores > 0) {
+			self.noInfectadas().forEach({p => 
+				(1..cantidadContagiadores).forEach({n => 
+					if (simulacion.debeInfectarsePersona(p, cantidadContagiadores)) {
+						p.infectarse()
+					}
+				})
+			})
+		}
+		//	¿HECHO?	=>	¿faltaria lo de las 4 personas o mas?
+	
+	
+		
+		/*if (cantidadContagiadores > 0) {
 			self.noInfectadas().forEach({ persona => 
 				if (simulacion.debeInfectarsePersona(persona, cantidadContagiadores)) {
 					persona.infectarse()
 				}
 			})
-		}
-//¿faltaria lo de las 4 personas o mas?
+		}*/	
 	}
+
+	
+	
 	
 /* 	method transladoDeUnHabitante() {
 		const quienesSePuedenMudar = personas.filter({ pers => not pers.estaAislada() })
@@ -92,8 +108,8 @@ class Manzana {
  	}
  */
 	method transladoDeUnHabitante() {
-		if (self.personasAisladas().size() > 2) {
-			const viajero = self.personasAisladas().anyOne()
+		if (self.noAisladas().size() > 2) {
+			const viajero = self.noAisladas().anyOne()
 			const destino = simulacion.manzanas().filter({ manz => self.esManzanaVecina(manz) }).anyOne()
 			self.personaSeMudaA(viajero, destino)
 		}
