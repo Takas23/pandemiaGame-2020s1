@@ -13,7 +13,7 @@ object pandemiaGameConfig {
 	method configureGame() {
 		self.configureGameParameters()
 		self.agregarManzanas()
-		simulacion.agregarPersonas() //provisorio?
+		self.agregarPersonas() //provisorio?
 		self.configureTeclas()
 		game.addVisual(agente)
 
@@ -36,6 +36,12 @@ object pandemiaGameConfig {
 		})
 	}
 	
+	method agregarPersonas() {
+		simulacion.manzanas().forEach({m =>
+			(1..simulacion.personasPorManzana()).forEach({n =>
+			simulacion.crearPersona().ubicarEn(m)
+		})})
+	}
 
 
 

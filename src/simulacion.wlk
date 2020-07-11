@@ -80,13 +80,15 @@ object simulacion {
 	}
 	* 
 	*/
+	/*	
 	method agregarPersonas() {
 		manzanas.forEach({m =>
 			(1..personasPorManzana).forEach({n =>
-			const nuevaPers = self.crearPersona()
-			nuevaPers.ubicarEn(m)
+			self.crearPersona().ubicarEn(m)
 		})})
 	}
+	*/
+	
 	
  	method crearPersona() {
 		return new Persona()
