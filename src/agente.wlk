@@ -1,5 +1,7 @@
 import wollok.game.*
 import simulacion.*
+import manzanas.*
+import personas.*
 
 
 object agente {
@@ -30,6 +32,11 @@ object agente {
 
 	method aislarInfectados(){
 		self.manzanaActual().infectadas().forEach({p => p.estaAislada(true)})
+	}
+	
+	// la 
+	method aislarInfectados2(){
+		manzana.aislarAInfectados()
 	}
 
 	method cuarentenarManzana(){
