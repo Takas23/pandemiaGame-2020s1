@@ -85,7 +85,8 @@ object pandemiaGameConfig {
 		keyboard.i().onPressDo({game.say(agente, "Total:" + agente.dondeEstoy().personasQueViven()
 				+ " Infectados:" + agente.dondeEstoy().cantidadInfectados()
 				+ " Sintomaticos:" + agente.dondeEstoy().cantidadSintomaticos()
-				+ " Contagiadores:" + agente.dondeEstoy().cantidadContagiadores())})		
+				+ " Contagiadores:" + agente.dondeEstoy().cantidadContagiadores()
+				+ " Aislados:" + agente.dondeEstoy().cantidadAisladas())})		
 	}
 	
 }

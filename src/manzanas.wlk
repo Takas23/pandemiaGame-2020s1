@@ -49,6 +49,10 @@ class Manzana {
 		return personas.filter({pers => pers.estaAislada()})
 	}
 	
+	method cantidadAisladas() {
+		return self.personasAisladas().size()
+	}
+	
 	method noAisladas() = personas.filter({p => not p.estaAislada()})
 	
 	method personasQueViven() {
@@ -75,11 +79,6 @@ class Manzana {
 
 	method contagiadores() = self.infectadas().filter({p => not p.estaAislada()})	
 
-// lo cambie asi usamos solo listas para no mezclarnos con conjuntos
-//	acabo de descubrir que este cambio mejoro muchisimo la velocidad del juego, parece que manejar
-//  conjuntos no le gusta mucho a wollok	
-//	method contagiadores() =  self.infectadas().difference(self.personasAisladas())
-	
 	method cantidadContagiadores() {
 		return self.contagiadores().size()
 	}
@@ -107,8 +106,6 @@ class Manzana {
 	
 	method personaSeMudaA(persona, manzanaDestino) {
 		persona.ubicarEn(manzanaDestino)
-		//self.personas().remove(persona)
-		// modifique aca. los() y el self estan de mas 
 		personas.remove(persona)
 	}
 	
