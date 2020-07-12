@@ -38,8 +38,13 @@ object simulacion {
 		return manzanas.sum({m => m.cantidadSintomaticos()})
 	}
 	
-	method crearManzana() {
+/* 	method crearManzana() {
 		return new Manzana()
+	}
+*/
+	method crearManzana() {
+		return if (self.tomarChance(50)) {new ManzanaA()}
+			else {new ManzanaB()}
 	}
 	
  	method crearPersona() {

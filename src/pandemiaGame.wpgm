@@ -10,8 +10,8 @@ import manzanas.*
  * 	M 		=> Estado de la simulacion (dia, personas, infectadas, sintomaticas)
  * 	N		=> Genera un nuevo infectado en una manzana random
  * 	B		=> Pasa al siguiente dia corriendo las simulaciones
- * 	Z		=> Aisla los infectados en la ubicacion del agente
- * 	X		=> El agente pone la manzana en cuarentena al estilo "Fase7"
+ * 	J		=> Aisla los infectados en la ubicacion del agente
+ * 	K		=> El agente pone la manzana en cuarentena al estilo "Fase7"
  * 	I		=> Muestra informacion sobre la manzana donde esta el agente (personas, infectadas, sintomaticos, contagiadores)
  */
 
@@ -34,7 +34,7 @@ object pandemiaGameConfig {
 		game.width(self.width())
 		game.title(self.title())
 	}
-	
+/*	
 	method agregarManzanas() {
 		(1..game.width()).forEach({x => 
 			(1..game.height()).forEach({y => 
@@ -45,12 +45,21 @@ object pandemiaGameConfig {
 			})
 		})
 	}
-	
+*/
+	method agregarManzanas() {
+		(1..game.width()).forEach({x => 
+			(1..game.height()).forEach({y => 
+				const nuevaManzana = simulacion.crearManzana()
+				nuevaManzana.position(game.at(x-1,y-1))
+				simulacion.agregarManzana(nuevaManzana)
+				game.addVisual(nuevaManzana)
+			})
+		})
+	}
+
+
 	method agregarPersonas() {
-		simulacion.manzanas().forEach({m =>
-			(1..simulacion.personasPorManzana()).forEach({n =>
-			simulacion.crearPersona().ubicarEn(m)
-		})})
+		simulacion.manzanas().forEach({m => m.agregarPersonasManzana()})
 	}
 
 
@@ -71,8 +80,8 @@ object pandemiaGameConfig {
 		keyboard.left().onPressDo({agente.moveOeste()})
 		keyboard.up().onPressDo({agente.moveNorte()})
 		keyboard.down().onPressDo({agente.moveSur()})
-		keyboard.z().onPressDo({agente.aislarInfectados()})
-		keyboard.x().onPressDo({agente.cuarentenarManzana()})
+		keyboard.j().onPressDo({agente.aislarInfectados()})
+		keyboard.k().onPressDo({agente.cuarentenarManzana()})
 		keyboard.i().onPressDo({game.say(agente, "Total:" + agente.dondeEstoy().personasQueViven()
 				+ " Infectados:" + agente.dondeEstoy().cantidadInfectados()
 				+ " Sintomaticos:" + agente.dondeEstoy().cantidadSintomaticos()

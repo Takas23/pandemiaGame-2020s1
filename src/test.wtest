@@ -1,7 +1,7 @@
 import personas.*
 import manzanas.*
 import simulacion.*
-
+/* 
 describe "Testear Todo" {
 	
 	const pers01 = new Persona()
@@ -33,3 +33,4 @@ describe "Testear Todo" {
 		
 	}
 }
+*/

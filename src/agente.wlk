@@ -34,6 +34,7 @@ object agente {
 
 	method cuarentenarManzana(){
 		self.manzanaActual().personas().forEach({p => p.respetaCuarentena(true)})
+		self.ponerCinta()
 	}
 
 	method manzanaActual(){
@@ -55,7 +56,15 @@ object agente {
 	method dondeEstoy() {
 		return simulacion.manzanas().find({m => m.position() == self.position()})
 	}
+	method ponerCinta() {
+		const cinta = new CintaCuarentena(position = self.position())
+		game.addVisual(cinta)
+	}
+}
 
-
-
+class CintaCuarentena {
+	var property position
+	method image() {
+		return "cuarentena3.png"
+	}
 }

@@ -5,7 +5,7 @@ import wollok.game.*
 class Manzana {
 	const property personas = []
 	var property position
-	
+/*	
 	method image() {
 		return if ((self.cantidadInfectados() == self.personasQueViven())) {
 			"rojo.png"
@@ -23,7 +23,8 @@ class Manzana {
 			"blanco.png"
 		}
 	}
-	
+ */	
+	method image()
 	method noInfectadas() {
 		return personas.filter({ pers => not pers.estaInfectada()})
 	} 	
@@ -107,5 +108,50 @@ class Manzana {
 	method personaSeMudaA(persona, manzanaDestino) {
 		persona.ubicarEn(manzanaDestino)
 		self.personas().remove(persona)
+	}
+	
+	method agregarPersonasManzana() {
+			(1..simulacion.personasPorManzana()).forEach({n =>
+			simulacion.crearPersona().ubicarEn(self)})
+	}
+}
+
+class ManzanaA inherits Manzana {
+	override method image() {
+		return if ((self.cantidadInfectados() == self.personasQueViven())) {
+			"c1r.png"
+		}
+		else if(self.cantidadInfectados().between(8, (self.personasQueViven()-1))) {
+			"c1nn.png"
+		}
+		else if(self.cantidadInfectados().between(4,7)){
+			"c1n.png"
+		}
+		else if(self.cantidadInfectados().between(1,3)){
+			"c1a.png"
+		}
+		else {
+			"c1b.png"
+		}
+	}
+}
+
+class ManzanaB inherits Manzana {
+	 override method image() {
+		return if ((self.cantidadInfectados() == self.personasQueViven())) {
+			"c2r.png"
+		}
+		else if(self.cantidadInfectados().between(8, (self.personasQueViven()-1))) {
+			"c2nn.png"
+		}
+		else if(self.cantidadInfectados().between(4,7)){
+			"c2n.png"
+		}
+		else if(self.cantidadInfectados().between(1,3)){
+			"c2a.png"
+		}
+		else {
+			"c2b.png"
+		}
 	}
 }
