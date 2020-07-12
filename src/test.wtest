@@ -20,9 +20,8 @@ describe "Testear Todo" {
 		assert.equals(2, simulacion.totalPersonas())	
 	}
 
-	test "Test 2" {
-		man01.agregarPersonas([pers01, pers02])
-		assert.equals(2, man01.personasQueViven())
+	test "Test 2" { //volver a testear
+	
 		man01.personaSeMudaA(pers02, man02)
 		simulacion.diaActual(1)
 		pers02.infectarse()
@@ -32,10 +31,5 @@ describe "Testear Todo" {
 		man02.curacion()
 		assert.notThat(pers02.estaInfectada())
 		
-	}
-	
-	test "test 3" {
-		simulacion.crearManzana()
-		assert.equals(10, simulacion.totalPersonas())
 	}
 }

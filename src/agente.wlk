@@ -52,7 +52,6 @@ object agente {
 	method puedeMoverO() {
 		return self.position().x() > 0
 	}
-//extra
 	method dondeEstoy() {
 		return simulacion.manzanas().find({m => m.position() == self.position()})
 	}
