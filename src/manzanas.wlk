@@ -106,6 +106,8 @@ class Manzana {
 	
 	method personaSeMudaA(persona, manzanaDestino) {
 		persona.ubicarEn(manzanaDestino)
-		self.personas().remove(persona)
+		//self.personas().remove(persona)
+		// modifique aca. los() y el self estan de mas 
+		personas.remove(persona)
 	}
 }
