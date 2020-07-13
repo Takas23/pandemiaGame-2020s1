@@ -57,7 +57,12 @@ object pandemiaGameConfig {
 		keyboard.m().onPressDo({game.say(agente, "Dia:" + simulacion.diaActual()
 				+ " Personas:" + simulacion.totalPersonas()
 				+ " Infectados:" + simulacion.totalInfectados()
-				+ " Sintomaticos:" + simulacion.totalSintomaticos())}) 
+				+ " Sintomaticos:" + simulacion.totalSintomaticos())
+					console.println(
+					"Dia:" + simulacion.diaActual()
+					+ " Personas:" + simulacion.totalPersonas()
+					+ " Infectados:" + simulacion.totalInfectados()
+					+ " Sintomaticos:" + simulacion.totalSintomaticos())}) 
 		keyboard.n().onPressDo({simulacion.nuevoInfectado()})
 		keyboard.b().onPressDo({
 			simulacion.pasaUnDia()
@@ -72,7 +77,14 @@ object pandemiaGameConfig {
 				+ " Infectados:" + agente.dondeEstoy().cantidadInfectados()
 				+ " Sintomaticos:" + agente.dondeEstoy().cantidadSintomaticos()
 				+ " Contagiadores:" + agente.dondeEstoy().cantidadContagiadores()
-				+ " Aislados:" + agente.dondeEstoy().cantidadAisladas())})		
+				+ " Aislados:" + agente.dondeEstoy().cantidadAisladas())
+					console.println(
+					"Total:" + agente.dondeEstoy().personasQueViven()
+					+ " Infectados:" + agente.dondeEstoy().cantidadInfectados()
+					+ " Sintomaticos:" + agente.dondeEstoy().cantidadSintomaticos()
+					+ " Contagiadores:" + agente.dondeEstoy().cantidadContagiadores()
+					+ " Aislados:" + agente.dondeEstoy().cantidadAisladas())
+					})		
 	}
 	
 }
