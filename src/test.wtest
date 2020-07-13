@@ -27,7 +27,7 @@ describe "Testear Todo" {
 		pers02.infectarse()
 		simulacion.diaActual(25)
 		assert.equals(1, man02.cantidadInfectados())
-		//assert.equals(#{pers02}, man02.infectadas())
+		assert.equals(#{pers02}, man02.infectadas())
 		man02.curacion()
 		assert.notThat(pers02.estaInfectada())
 		
