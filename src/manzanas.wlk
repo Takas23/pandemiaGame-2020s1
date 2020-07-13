@@ -2,40 +2,24 @@ import personas.*
 import simulacion.*
 import wollok.game.*
 
+//clase abstracta
 class Manzana {
 	const property personas = []
 	var property position
-/*	
-	method image() {
-		return if ((self.cantidadInfectados() == self.personasQueViven())) {
-			"rojo.png"
-		}
-		else if(self.cantidadInfectados().between(8, (self.personasQueViven()-1))) {
-			"naranjaOscuro.png"
-		}
-		else if(self.cantidadInfectados().between(4,7)){
-			"naranja.png"
-		}
-		else if(self.cantidadInfectados().between(1,3)){
-			"amarillo.png"
-		}
-		else {
-			"blanco.png"
-		}
-	}
- */	
+
 	method image()
+	
 	method noInfectadas() {
 		return personas.filter({ pers => not pers.estaInfectada()})
 	} 	
 	
 	method infectadas() {
 		return personas.filter({ p => p.estaInfectada() })
-	}	//testeado OK
+	}	
 	
 	method cantidadInfectados() {
 		return self.infectadas().size()
-	}	//testeado OK
+	}	
 	
 	method sintomaticos() {
 		return self.infectadas().filter({ p => p.tieneSintomas()})
@@ -57,7 +41,7 @@ class Manzana {
 	
 	method personasQueViven() {
 		return personas.size()
-	}	//testeado OK
+	}	
 	
 	method esManzanaVecina(manzana) {
 		return manzana.position().distance(position) == 1
@@ -65,7 +49,7 @@ class Manzana {
 
 	method vive(persona) {
 		return personas.contains(persona)
-	}	//testeado OK
+	}	
 	
 	method pasarUnDia() {
 		self.transladoDeUnHabitante()
@@ -75,7 +59,7 @@ class Manzana {
 	}
 	method curacion() {
 		personas.forEach({pers => pers.cura()})
-	}	//testeado OK
+	}	
 
 	method contagiadores() = self.infectadas().filter({p => not p.estaAislada()})	
 
@@ -83,7 +67,7 @@ class Manzana {
 		return self.contagiadores().size()
 	}
 	
-//Revisar	
+
 	method simulacionContagiosDiarios() { 
 		const cantidadContagiadores = self.cantidadContagiadores()
 	

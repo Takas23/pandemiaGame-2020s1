@@ -33,12 +33,7 @@ object agente {
 	method aislarInfectados(){
 		self.manzanaActual().infectadas().forEach({p => p.estaAislada(true)})
 	}
-/* 	este no creo que sea necesario
-	// la 
-	method aislarInfectados2(){
-		manzana.aislarAInfectados()
-	}
-*/
+
 	method cuarentenarManzana(){
 		self.manzanaActual().personas().forEach({p => p.respetaCuarentena(true)})
 		self.ponerCinta()

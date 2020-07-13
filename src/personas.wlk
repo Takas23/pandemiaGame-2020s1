@@ -18,19 +18,19 @@ class Persona {
 	
 	method dondeVive() {
 		return simulacion.manzanas().find({m => m.vive(self)})
-	}	//testeado OK
+	}	
 	
 	method viveCon(persona) {
 		return self.dondeVive() == persona.dondeVive()
-	}	//testeado OK
+	}	
 	
 	method ubicarEn(manzana) {	
 		manzana.personas().add(self)	
-	}	//testeado OK
+	}	
 	
 	method cura() {
 		if (self.estaInfectada() 
 			and (diaDeInfeccion-simulacion.diaActual()).abs() > simulacion.duracionInfeccion())
 		self.estaInfectada(false)
-	}	//testeado OK
+	}	
 }

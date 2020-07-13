@@ -16,7 +16,7 @@ object simulacion {
 
 	method agregarManzana(manzana) {
 		manzanas.add(manzana) 
-	}	//testeado OK
+	}	
 	
 	method debeInfectarsePersona(persona, cantidadContagiadores) {
 		const chanceDeContagio = if (persona.respetaCuarentena()) 
@@ -28,7 +28,7 @@ object simulacion {
 
 	method totalPersonas() {
 		return manzanas.sum({m => m.personasQueViven()})
-	}	//testeado OK
+	}	
 	
 	method totalInfectados() {
 		return manzanas.sum({m => m.cantidadInfectados()})
@@ -38,10 +38,6 @@ object simulacion {
 		return manzanas.sum({m => m.cantidadSintomaticos()})
 	}
 	
-/* 	method crearManzana() {
-		return new Manzana()
-	}
-*/
 	method crearManzana() {
 		return if (self.tomarChance(50)) {new ManzanaA()}
 			else {new ManzanaB()}
@@ -53,15 +49,15 @@ object simulacion {
 
 	method crearInfectado() {
 		return new Persona(estaInfectada = true, diaDeInfeccion = diaActual)
-	}	//OK
+	}	
 	
 	method nuevoInfectado() {
 		self.manzanaRandom().personas().add(self.crearInfectado())
-	}	//OK
+	}	
 	
 	method manzanaRandom() {
 		return manzanas.anyOne()
-	}	//OK
+	}	
 	
 	method pasaUnDia() {
 		manzanas.forEach({m => m.pasarUnDia()})

@@ -34,18 +34,7 @@ object pandemiaGameConfig {
 		game.width(self.width())
 		game.title(self.title())
 	}
-/*	
-	method agregarManzanas() {
-		(1..game.width()).forEach({x => 
-			(1..game.height()).forEach({y => 
-				const nuevaManzana = simulacion.crearManzana()
-				nuevaManzana.position(game.at(x-1,y-1))
-				simulacion.agregarManzana(nuevaManzana)
-				game.addVisual(nuevaManzana)
-			})
-		})
-	}
-*/
+
 	method agregarManzanas() {
 		(1..game.width()).forEach({x => 
 			(1..game.height()).forEach({y => 
@@ -65,14 +54,11 @@ object pandemiaGameConfig {
 
 
  	method configureTeclas() {
- 			//mensaje estado de la simulacion
 		keyboard.m().onPressDo({game.say(agente, "Dia:" + simulacion.diaActual()
 				+ " Personas:" + simulacion.totalPersonas()
 				+ " Infectados:" + simulacion.totalInfectados()
 				+ " Sintomaticos:" + simulacion.totalSintomaticos())}) 
-			//genera una nueva persona infectada en una manzana al azar
 		keyboard.n().onPressDo({simulacion.nuevoInfectado()})
-			//pasa un dia en la simulacion(movimiento, contagio, curacion)
 		keyboard.b().onPressDo({
 			simulacion.pasaUnDia()
 			console.println("terminó el día "+(simulacion.diaActual()-1))})
