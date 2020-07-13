@@ -32,5 +32,6 @@ class Persona {
 		if (self.estaInfectada() 
 			and (diaDeInfeccion-simulacion.diaActual()).abs() > simulacion.duracionInfeccion())
 		self.estaInfectada(false)
+		self.tieneSintomas(false)
 	}	
 }
